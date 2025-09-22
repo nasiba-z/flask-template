@@ -1,5 +1,3 @@
-# Synthia Pipeline (Hackathon Template)
-
 This is a minimal Cloud Run service for the Google Cloud solutions.
 
 ## Features
