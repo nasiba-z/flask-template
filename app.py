@@ -76,3 +76,16 @@ def pubsub_push():
     uri = save_to_gcs(filename, decrypted)
 
     return json.dumps({"saved": uri}), 200
+
+# --- extra root routes for convenience ---
+
+@app.route("/", methods=["GET"])
+def root():
+    return "service up", 200
+
+# Optional: accept POST at "/" and reuse your Pub/Sub logic
+@app.route("/", methods=["POST"])
+def root_post():
+    # If the body is already a Pub/Sub envelope, just reuse the same handler:
+    return pubsub_push()
+
